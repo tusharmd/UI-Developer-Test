@@ -264,7 +264,7 @@ a no-slip tongue and soft microsude lining</div>
 					</div>
 				</div>
 				<div class="footernav">
-					<h2 class="foo_head_links">legal</h2>
+					<h2 class="foo_head_links">Legal</h2>
 					<div class="foo_slide">
 						<ul class="footersub_links">
 							<li><a href="javascript:;">Terms of use</a></li>
@@ -340,7 +340,19 @@ a no-slip tongue and soft microsude lining</div>
 		  slidesToScroll: 1,
 		  arrows: false,
 		  fade: true,
-		  asNavFor: '.product_small'
+		  asNavFor: '.product_small',
+		  responsive: [
+                  {
+                    breakpoint: 500,
+                    settings: {
+                      //slidesToShow: 3,
+                      slidesToScroll: 1,
+                      //infinite: false,
+                      arrows: true,
+                      //autoplay:true
+                    }
+                  },
+             ]
 		});
 		$('.product_small').slick({
 		  slidesToShow: 3,
@@ -381,7 +393,8 @@ a no-slip tongue and soft microsude lining</div>
                       slidesToScroll: 1,
                       infinite: false,
                       arrows:true,
-                      autoplay:true
+                      autoplay:true,
+                      autoplaySpeed:1500,
                     }
                   },
                   {
@@ -389,7 +402,9 @@ a no-slip tongue and soft microsude lining</div>
                     settings: {
                       slidesToShow: 1,
                       slidesToScroll: 1,
-                       arrows:true,
+                      arrows:true,
+                      autoplay:true, 
+                      autoplaySpeed:1500,
                     }
                   },
                 ]
@@ -399,7 +414,7 @@ a no-slip tongue and soft microsude lining</div>
 		if ($(window).width() <= 767) {
 			$(document).on('click', ".foo_head_links" ,function(){
 				if($(this).next().is(':visible') == false){
-					$('.foo_silde').slideUp(300).removeClass("active_links");
+					$('.foo_slide').slideUp(300).removeClass('active_links');
 					$(".foo_head_links").removeClass("active");
 				}
 				$(this).next().slideToggle(300).toggleClass("active_links");
