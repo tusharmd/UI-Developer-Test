@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Signika:300,400,600,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+<body>
+<div class="main_warpper">
+	<button class="continues_btn common_btn">Continue</button>
+	<div class="modalpop">
+		<div class="modalpop_overlay"></div>
+		<div class="modal_content_wrap">
+			<div class="closemodal">X</div>
+			<div class="maincontent"></div>
+		</div>
+	</div>
+	<div class="from_wrapper">
+		<button class="common_btn footerbtn">Uninstall</button>
+		<div class="form_details">
+			<h2 class="form_heading">Sign up</h2>
+			<form class="popup-register-form">
+				<ul class="popup-fields">
+					<li>
+						<div>
+							<input type="text" name="fastname" placeholder="First Name*" />
+						</div>
+						<div>
+							<input type="text" name="lastname" placeholder="Last Name*" />
+						</div>
+					</li>
+					<li>
+						<input type="email" name="email" placeholder="Email" autocomplete="off">
+					</li>
+					<li>
+						<div>
+							<input type="password" name="password" placeholder="Password*" />
+						</div>
+						<div>
+							<input type="text" name="confirmpassword" placeholder="Confirm Password*" />
+						</div>
+					</li>
+					<li>
+						<button class="submit_btn">Submit</button>
+					</li>
+				</ul>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$('.continues_btn').click(function(){
+		browersdetect();
+	});
+	$('.closemodal').click(function(){
+		$(this).parents().removeClass('active');
+	});
+	$('.footerbtn').click(function(){
+		$('.form_details').toggleClass("form_Active");
+	});
+
+});
+  function browersdetect(){
+    var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    var isEdge = !isIE && !!window.StyleMedia;
+    var isChrome = !!window.chrome && !!window.chrome.webstore;
+    var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+    if(isChrome){
+        $('.modalpop').addClass('chrome active');
+    }
+    else if(isFirefox){
+        $('.modalpop').addClass('mozila active');
+    }
+    else if(isEdge){
+        $('.modalpop').addClass('edge active');
+    }
+    else if(isSafari){
+        $('.modalpop').addClass('chrome active');
+    }
+    else{
+    	$('.modalpop').addClass('nobrowers active');
+    }
+    if(isChrome || isFirefox || isEdge || isSafari){
+    	$('.maincontent').html('"Thank you for downloading."');
+    }else{
+    	$('.maincontent').html('"Browser Not Supported."');	
+    }
+    }
+</script>	
+</body>
+</html>
